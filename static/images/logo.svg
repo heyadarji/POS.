@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250" height="60" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-text { font-family: Arial, sans-serif; font-weight: bold; }
+        .crown { fill: #6B46C1; }
+    </style>
+
+    <!-- Group with all elements -->
+    <g transform="translate(10,35)">
+        <!-- 🔻 Add your image here by replacing 'your-logo.png' with your file path -->
+        <image href="point-of-sale.png" x="-40" y="-30" width="30" height="30" />
+
+        <!-- Crown icon -->
+        <path class="crown" d="M20,0 L40,0 L30,-20 Z" />
+
+        <!-- Brand text -->
+        <text class="logo-text" x="50" y="0" font-size="24">Omnipay</text>
+    </g>
+</svg>

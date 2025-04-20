@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Solutions - Omnipay Solutions{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="hero-content">
+                <h1>Payment Solutions That Work For You</h1>
+                <p>Discover our comprehensive range of payment processing solutions designed to meet the unique needs of your business.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Payment Solutions Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Payment Solutions</h2>
+            <p>Streamline your payment processes with our comprehensive suite of payment solutions</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3>Credit Card Processing</h3>
+                <p>Accept all major credit and debit cards with competitive rates and fast settlement times. Our secure processing solutions keep your customers' data safe.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">Learn More</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Payments</h3>
+                <p>Process payments anywhere with our mobile solutions. Accept Apple Pay, Google Pay, and other mobile wallets with ease.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">Learn More</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-commerce Solutions</h3>
+                <p>Integrate our payment gateway with your online store for a seamless checkout experience. Reduce cart abandonment and boost conversion rates.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">Learn More</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>ACH Processing</h3>
+                <p>Process direct bank transfers for recurring payments and large transactions with lower fees than credit card processing.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Retail Technology Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Retail Technology</h2>
+            <p>Modernize your retail operations with our advanced point-of-sale and payment technology</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <h3>Point of Sale Systems</h3>
+                <p>Complete POS solutions with integrated payments, inventory management, employee tracking, and customer relationship tools.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">View Products</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tablet-alt"></i>
+                </div>
+                <h3>Mobile POS</h3>
+                <p>Turn your tablet into a powerful point-of-sale terminal. Perfect for pop-up shops, food trucks, and line-busting during peak times.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">View Products</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <h3>Contactless Solutions</h3>
+                <p>Offer touchless payment options to your customers with NFC, QR code, and contactless card payment terminals.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">View Products</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>Self-Checkout Kiosks</h3>
+                <p>Reduce wait times and staffing requirements with our intuitive self-checkout solutions designed for retail environments.</p>
+                <a href="{% url 'product_list' %}" class="btn btn-outline mt-3">View Products</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industry-Specific Solutions Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Industry-Specific Solutions</h2>
+            <p>Tailored payment solutions designed for the unique needs of your industry</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3>Retail</h3>
+                <p>Comprehensive retail solutions with inventory management, customer loyalty programs, and multi-location support.</p>
+                <a href="{% url 'contact' %}" class="btn btn-outline mt-3">Contact Sales</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Restaurants</h3>
+                <p>Restaurant-specific features including table management, split checks, tipping options, and kitchen display systems.</p>
+                <a href="{% url 'contact' %}" class="btn btn-outline mt-3">Contact Sales</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <h3>Hospitality</h3>
+                <p>Hotel and lodging solutions with reservation integration, room service ordering, and guest billing capabilities.</p>
+                <a href="{% url 'contact' %}" class="btn btn-outline mt-3">Contact Sales</a>
+            </div>
+            
+            <div class="card feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-briefcase-medical"></i>
+                </div>
+                <h3>Healthcare</h3>
+                <p>HIPAA-compliant payment solutions for medical practices, clinics, and healthcare providers with insurance integration.</p>
+                <a href="{% url 'contact' %}" class="btn btn-outline mt-3">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Streamline Your Payments?</h2>
+        <p>Our payment experts are ready to help you find the perfect solution for your business needs.</p>
+        <div class="cta-buttons">
+            <a href="{% url 'contact' %}" class="btn btn-lg btn-outline">Request a Demo</a>
+            <a href="{% url 'product_list' %}" class="btn btn-lg btn-secondary">View All Products</a>
+        </div>
+    </div>
+</section>
+{% endblock %} 

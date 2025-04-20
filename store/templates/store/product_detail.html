@@ -1,0 +1,606 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if product %}
+        {{ product.name }} - Omnipay Solutions
+    {% else %}
+        Product Details - Omnipay Solutions
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section (Smaller for Product Detail) -->
+<section class="hero" style="padding: 2rem 0;">
+    <div class="container">
+        <div class="row">
+            <div class="hero-content">
+                <h1>
+                    {% if product %}
+                        {{ product.name }}
+                    {% else %}
+                        Advanced POS System
+                    {% endif %}
+                </h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Products</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {% if product %}
+                                {{ product.name }}
+                            {% else %}
+                                Advanced POS System
+                            {% endif %}
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product Detail Section -->
+<section class="py-5">
+    <div class="container">
+        <!-- Product Overview -->
+        <div class="product-detail">
+            <!-- Product Image -->
+            <div class="product-image-container">
+                {% if product and product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                {% else %}
+                    <img src="{% static 'images/product1.jpg' %}" alt="Advanced POS System" class="product-image" onerror="this.src='{% static 'images/product-placeholder.jpg' %}'; this.onerror='';">
+                {% endif %}
+            </div>
+            
+            <!-- Product Information -->
+            <div class="product-info">
+                <h1>
+                    {% if product %}
+                        {{ product.name }}
+                    {% else %}
+                        Advanced POS System
+                    {% endif %}
+                </h1>
+                
+                <div class="product-rating mb-3">
+                    <div class="star-rating">
+                        {% if product and avg_rating %}
+                            {% for i in rating_range %}
+                                {% if forloop.counter <= avg_rating %}
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                {% elif forloop.counter <= avg_rating|add:0.5 %}
+                                    <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                {% else %}
+                                    <span class="star"><i class="far fa-star"></i></span>
+                                {% endif %}
+                            {% endfor %}
+                            <span class="rating-count">({{ reviews|length }} reviews)</span>
+                        {% else %}
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                            <span class="rating-count">(24 reviews)</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="product-price mb-3">
+                    {% if product %}
+                        ${{ product.price }}
+                    {% else %}
+                        $999.99
+                    {% endif %}
+                </div>
+                
+                <div class="product-availability mb-3">
+                    <span class="badge badge-success">
+                        {% if product %}
+                            {% if product.stock > 0 %}In Stock{% else %}Out of Stock{% endif %}
+                        {% else %}
+                            In Stock
+                        {% endif %}
+                    </span>
+                </div>
+                
+                <div class="product-short-description mb-4">
+                    {% if product %}
+                        <p>{{ product.description|truncatewords:30 }}</p>
+                    {% else %}
+                        <p>Complete point-of-sale solution with integrated payments, inventory management, and analytics. Designed for retail, restaurant, and service businesses of all sizes.</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Quantity Control -->
+                <div class="quantity-control mb-4">
+                    <button type="button" class="quantity-btn" data-action="decrease">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="99">
+                    <button type="button" class="quantity-btn" data-action="increase">+</button>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="btn btn-primary btn-lg">Add to Cart</button>
+                    <button class="btn btn-outline btn-lg ml-2"><i class="far fa-heart"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product Tabs -->
+        <div class="product-tabs mt-5">
+            <ul class="tab-nav">
+                <li class="tab-nav-item active" data-tab="description">Description</li>
+                <li class="tab-nav-item" data-tab="specifications">Specifications</li>
+                <li class="tab-nav-item" data-tab="reviews">Reviews</li>
+                <li class="tab-nav-item" data-tab="support">Support</li>
+            </ul>
+            
+            <div class="tab-content">
+                <!-- Description Tab -->
+                <div id="description" class="tab-pane active">
+                    {% if product %}
+                        {{ product.description|linebreaks }}
+                    {% else %}
+                        <p>The Advanced POS System is a complete point-of-sale solution designed to streamline your business operations. With intuitive interfaces and powerful backend capabilities, this system helps you process transactions quickly while providing valuable insights into your business performance.</p>
+                        
+                        <p>Key features include:</p>
+                        <ul>
+                            <li>Fast, secure payment processing with support for all payment methods</li>
+                            <li>Comprehensive inventory management with real-time tracking</li>
+                            <li>Employee management with time tracking and permission controls</li>
+                            <li>Customer relationship management tools to build loyalty</li>
+                            <li>Advanced reporting and analytics to track business performance</li>
+                            <li>Cloud-based system with automatic backups and updates</li>
+                            <li>Multi-location support for businesses with multiple stores</li>
+                        </ul>
+                        
+                        <p>The system includes a 15" touchscreen display, thermal receipt printer, cash drawer, barcode scanner, and card reader. All components are designed for durability in high-volume commercial environments, with an expected lifespan of 5+ years with normal use.</p>
+                        
+                        <p>Our Advanced POS System can be customized to meet the unique needs of your business, with industry-specific configurations available for retail, restaurant, and service businesses.</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Specifications Tab -->
+                <div id="specifications" class="tab-pane">
+                    {% if product and product.specifications %}
+                        <table class="specs-table">
+                            {% for key, value in product.specifications.items %}
+                                <tr>
+                                    <th>{{ key }}</th>
+                                    <td>{{ value }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <table class="specs-table">
+                            <tr>
+                                <th>Display</th>
+                                <td>15" touchscreen display (1024x768 resolution)</td>
+                            </tr>
+                            <tr>
+                                <th>Processor</th>
+                                <td>Intel Core i5, 2.4GHz quad-core</td>
+                            </tr>
+                            <tr>
+                                <th>Memory</th>
+                                <td>8GB DDR4 RAM</td>
+                            </tr>
+                            <tr>
+                                <th>Storage</th>
+                                <td>256GB SSD</td>
+                            </tr>
+                            <tr>
+                                <th>Operating System</th>
+                                <td>Windows 10 IoT Enterprise</td>
+                            </tr>
+                            <tr>
+                                <th>Connectivity</th>
+                                <td>Wi-Fi, Ethernet, Bluetooth 5.0, 4x USB 3.0 ports</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Support</th>
+                                <td>EMV chip, NFC contactless, magnetic stripe, cash</td>
+                            </tr>
+                            <tr>
+                                <th>Included Peripherals</th>
+                                <td>Thermal receipt printer, cash drawer, barcode scanner, payment terminal</td>
+                            </tr>
+                            <tr>
+                                <th>Dimensions</th>
+                                <td>15.3" x 10.2" x 8.7" (main unit)</td>
+                            </tr>
+                            <tr>
+                                <th>Weight</th>
+                                <td>12.5 lbs (main unit only)</td>
+                            </tr>
+                            <tr>
+                                <th>Power Supply</th>
+                                <td>100-240V AC, 50-60Hz</td>
+                            </tr>
+                            <tr>
+                                <th>Warranty</th>
+                                <td>2-year limited hardware warranty, 90-day technical support</td>
+                            </tr>
+                        </table>
+                    {% endif %}
+                </div>
+                
+                <!-- Reviews Tab -->
+                <div id="reviews" class="tab-pane">
+                    <!-- Review Summary -->
+                    <div class="review-summary mb-4">
+                        <div class="review-average">
+                            <h3>
+                                {% if product and avg_rating %}
+                                    {{ avg_rating|floatformat:1 }} out of 5
+                                {% else %}
+                                    4.5 out of 5
+                                {% endif %}
+                            </h3>
+                            <div class="star-rating">
+                                {% if product and avg_rating %}
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= avg_rating %}
+                                            <span class="star"><i class="fas fa-star"></i></span>
+                                        {% elif forloop.counter <= avg_rating|add:0.5 %}
+                                            <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                        {% else %}
+                                            <span class="star"><i class="far fa-star"></i></span>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                {% endif %}
+                            </div>
+                            <p>
+                                {% if product and reviews %}
+                                    Based on {{ reviews|length }} reviews
+                                {% else %}
+                                    Based on 24 reviews
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Review Form -->
+                    <div class="review-form-container mb-5">
+                        <h3>Write a Review</h3>
+                        <form id="review-form" action="{% if product %}{{ product.get_absolute_url }}{% else %}#{% endif %}" method="post">
+                            {% csrf_token %}
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="review-name">Your Name</label>
+                                    <input type="text" id="review-name" name="name" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="review-email">Your Email</label>
+                                    <input type="email" id="review-email" name="email" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="review-rating">Rating</label>
+                                    <select id="review-rating" name="rating" class="form-control" required>
+                                        <option value="5">5 Stars - Excellent</option>
+                                        <option value="4">4 Stars - Very Good</option>
+                                        <option value="3">3 Stars - Good</option>
+                                        <option value="2">2 Stars - Fair</option>
+                                        <option value="1">1 Star - Poor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="review-comment">Your Review</label>
+                                    <textarea id="review-comment" name="comment" rows="5" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Customer Reviews -->
+                    <div class="customer-reviews">
+                        <h3>Customer Reviews</h3>
+                        
+                        {% if product and reviews %}
+                            {% for review in reviews %}
+                                <div class="review">
+                                    <div class="review-header">
+                                        <span class="review-author">{{ review.name }}</span>
+                                        <span class="review-date">{{ review.created|date:"F j, Y" }}</span>
+                                    </div>
+                                    <div class="star-rating">
+                                        {% for i in "12345" %}
+                                            {% if forloop.counter <= review.rating %}
+                                                <span class="star"><i class="fas fa-star"></i></span>
+                                            {% else %}
+                                                <span class="star"><i class="far fa-star"></i></span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="review-content">
+                                        <p>{{ review.comment }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <!-- Sample Reviews -->
+                            <div class="review">
+                                <div class="review-header">
+                                    <span class="review-author">James Wilson</span>
+                                    <span class="review-date">March 15, 2023</span>
+                                </div>
+                                <div class="star-rating">
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                </div>
+                                <div class="review-content">
+                                    <p>This POS system has completely transformed our retail business. The interface is intuitive, and our staff picked it up quickly. The inventory management features save us hours every week, and the reporting tools give us valuable insights. Highly recommended for any retail business!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="review">
+                                <div class="review-header">
+                                    <span class="review-author">Sarah Johnson</span>
+                                    <span class="review-date">February 22, 2023</span>
+                                </div>
+                                <div class="star-rating">
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="review-content">
+                                    <p>Overall a great system that has improved our checkout efficiency by at least 40%. The only minor issue we've had is with the barcode scanner occasionally requiring multiple scans for some products. Customer support has been responsive and is working with us to resolve this.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="review">
+                                <div class="review-header">
+                                    <span class="review-author">Michael Brown</span>
+                                    <span class="review-date">January 10, 2023</span>
+                                </div>
+                                <div class="star-rating">
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star"></i></span>
+                                    <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                </div>
+                                <div class="review-content">
+                                    <p>We've been using this POS system in our cafe for about six months now, and it's been a game-changer. The table management and split check features are perfect for our needs, and the integration with our accounting software saves a ton of time. Setup took a bit longer than expected, but the support team was helpful throughout the process.</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Support Tab -->
+                <div id="support" class="tab-pane">
+                    <h3>Product Support</h3>
+                    
+                    <div class="support-options">
+                        <div class="support-option">
+                            <div class="support-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h4>Documentation</h4>
+                            <p>Access comprehensive product documentation, user manuals, and troubleshooting guides.</p>
+                            <a href="#" class="btn btn-outline">View Documentation</a>
+                        </div>
+                        
+                        <div class="support-option">
+                            <div class="support-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h4>Video Tutorials</h4>
+                            <p>Learn how to use the Advanced POS System with our step-by-step video tutorials.</p>
+                            <a href="#" class="btn btn-outline">Watch Tutorials</a>
+                        </div>
+                        
+                        <div class="support-option">
+                            <div class="support-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4>Technical Support</h4>
+                            <p>Contact our technical support team for assistance with installation, configuration, or troubleshooting.</p>
+                            <a href="{% url 'contact' %}" class="btn btn-outline">Contact Support</a>
+                        </div>
+                        
+                        <div class="support-option">
+                            <div class="support-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h4>Software Updates</h4>
+                            <p>Download the latest software updates and firmware for your POS system.</p>
+                            <a href="#" class="btn btn-outline">Download Updates</a>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-section mt-5">
+                        <h3>Frequently Asked Questions</h3>
+                        
+                        <div class="faq-container">
+                            <div class="faq-item">
+                                <div class="faq-question">How long does installation take?</div>
+                                <div class="faq-answer">
+                                    <p>Installation typically takes 1-2 hours, including hardware setup and software configuration. Our technicians can perform the installation on-site, or you can follow our detailed installation guide for self-installation.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">Is my data backed up automatically?</div>
+                                <div class="faq-answer">
+                                    <p>Yes, the Advanced POS System performs automatic cloud backups every 24 hours. You can also configure more frequent backups or perform manual backups at any time through the system settings.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">Can I integrate with my existing accounting software?</div>
+                                <div class="faq-answer">
+                                    <p>The Advanced POS System integrates seamlessly with popular accounting software including QuickBooks, Xero, and Sage. For other accounting systems, our API enables custom integrations that can be configured by our support team.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Related Products -->
+        <div class="related-products mt-5">
+            <h2>Related Products</h2>
+            
+            <div class="product-grid">
+                <div class="card product-card">
+                    <img src="{% static 'images/product2.jpg' %}" alt="Mobile Payment Terminal" class="card-img" onerror="this.src='{% static 'images/product-placeholder.jpg' %}'; this.onerror='';">
+                    <div class="card-body">
+                        <h3 class="card-title">Mobile Payment Terminal</h3>
+                        <p class="card-text">Accept payments anywhere with our portable, wireless payment terminal with long battery life.</p>
+                        <div class="product-price">$299.99</div>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="card product-card">
+                    <img src="{% static 'images/product6.jpg' %}" alt="Retail POS Bundle" class="card-img" onerror="this.src='{% static 'images/product-placeholder.jpg' %}'; this.onerror='';">
+                    <div class="card-body">
+                        <h3 class="card-title">Retail POS Bundle</h3>
+                        <p class="card-text">Complete retail solution including touchscreen terminal, cash drawer, receipt printer, and barcode scanner.</p>
+                        <div class="product-price">$1,299.99</div>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="card product-card">
+                    <img src="{% static 'images/product5.jpg' %}" alt="Contactless Card Reader" class="card-img" onerror="this.src='{% static 'images/product-placeholder.jpg' %}'; this.onerror='';">
+                    <div class="card-body">
+                        <h3 class="card-title">Contactless Card Reader</h3>
+                        <p class="card-text">Accept contactless payments, chip cards, and mobile wallets with this compact card reader.</p>
+                        <div class="product-price">$129.99</div>
+                        <a href="#" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .breadcrumb {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+    }
+    
+    .breadcrumb-item {
+        display: inline-block;
+        color: white;
+    }
+    
+    .breadcrumb-item a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .breadcrumb-item + .breadcrumb-item::before {
+        content: '/';
+        padding: 0 0.5rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .breadcrumb-item.active {
+        color: white;
+    }
+    
+    .product-image-container {
+        text-align: center;
+    }
+    
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+    }
+    
+    .rating-count {
+        color: var(--text-muted);
+        margin-left: 0.5rem;
+    }
+    
+    .badge {
+        display: inline-block;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+    }
+    
+    .badge-success {
+        background-color: var(--success-color);
+        color: white;
+    }
+    
+    .ml-2 {
+        margin-left: 0.5rem;
+    }
+    
+    .support-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .support-option {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+    }
+    
+    .support-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix for tab mobile display */
+    @media (max-width: 576px) {
+        .tab-nav {
+            flex-wrap: wrap;
+        }
+        
+        .tab-nav-item {
+            flex: 1 0 50%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %} 

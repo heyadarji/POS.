@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Omnipay Solutions{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="hero-content">
+                <h1>Contact Our Team</h1>
+                <p>Have questions or need assistance? Reach out to our support team and we'll get back to you as soon as possible.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form and Information -->
+<section class="py-5">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="mb-4">Send Us a Message</h2>
+                <form id="contact-form" action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="6" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                </form>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3 class="mb-4">Contact Information</h3>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Owner Details</h4>
+                        <p>Binal Amin<br>CEO and Founder, Omnipay Solutions<br>BS in Cloud Computing<br>MBA in Healthcare Management</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>732-347-2337</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>binal@omnipay-solution.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 5:00 PM EST<br>Saturday & Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <!-- <div class="social-links mt-4">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Find Us</h2>
+            <p>Visit our headquarters in the heart of New York City</p>
+        </div>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215351917523!2d-73.98784492346204!3d40.75886077138801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1684786478958!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</section> -->
+
+<!-- FAQ Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about our payment solutions and services</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">What payment methods do your systems support?</div>
+                <div class="faq-answer">
+                    <p>Our payment systems support all major credit and debit cards (Visa, MasterCard, American Express, Discover), mobile payments (Apple Pay, Google Pay, Samsung Pay), contactless payments, and various digital wallets. We also offer ACH processing for direct bank transfers and can integrate with cryptocurrency payment options upon request.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How secure are your payment solutions?</div>
+                <div class="faq-answer">
+                    <p>Security is our top priority. All our payment solutions are PCI DSS compliant and utilize end-to-end encryption to protect sensitive data. We implement tokenization technology to ensure card details are never stored on your systems. Our fraud detection algorithms continuously monitor transactions for suspicious activity, and we regularly undergo security audits to maintain the highest standards of protection.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What are your processing fees?</div>
+                <div class="faq-answer">
+                    <p>Our processing fees vary based on your business type, transaction volume, and the specific solution you choose. We offer transparent pricing with no hidden fees, and we're committed to providing competitive rates. Contact our sales team for a customized quote tailored to your business needs. We can often beat competitor pricing while providing superior service and technology.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do you offer integration with existing business software?</div>
+                <div class="faq-answer">
+                    <p>Yes, we offer seamless integration with a wide range of business software including popular POS systems, e-commerce platforms, accounting software, CRM systems, and inventory management tools. Our API is well-documented and designed for easy implementation. Our technical team can assist with custom integrations for proprietary or specialized systems.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What kind of customer support do you provide?</div>
+                <div class="faq-answer">
+                    <p>We provide 24/7 customer support through multiple channels including phone, email, and live chat. Our dedicated support team includes technical specialists who can quickly resolve any issues that may arise. We also offer comprehensive documentation, video tutorials, and regular training sessions to help you make the most of our solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize the first FAQ item to be open for better UX
+    document.addEventListener('DOMContentLoaded', function() {
+        const firstQuestion = document.querySelector('.faq-question');
+        const firstAnswer = document.querySelector('.faq-answer');
+        
+        if (firstQuestion && firstAnswer) {
+            firstQuestion.classList.add('active');
+            firstAnswer.classList.add('show');
+        }
+    });
+</script>
+{% endblock %} 

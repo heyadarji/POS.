@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Omnipay Solutions{% endblock %}
+
+{% block content %}
+<!-- <header style="display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; background-color: #fff;">
+    <div style="flex-shrink: 0;">
+        <img src="{% static 'D:\Python and Power BI and AI and Analytics USA\OmnipayWeb\static\images\omni logo.png' %}" alt="Omnipay Solutions Logo" style="height: 50px;">
+    </div>
+    <nav>
+        <ul style="list-style: none; display: flex; gap: 30px; margin: 0; padding: 0;">
+            <li><a href="/" style="text-decoration: none; color: #333; font-weight: bold;">Home</a></li>
+            <li><a href="/solutions" style="text-decoration: none; color: #333; font-weight: bold;">Solutions</a></li>
+            <li><a href="/products" style="text-decoration: none; color: #333; font-weight: bold;">Products</a></li>
+            <li><a href="/about" style="text-decoration: none; color: #333; font-weight: bold;">About</a></li>
+            <li><a href="/contact" style="text-decoration: none; color: #333; font-weight: bold;">Contact</a></li>
+        </ul>
+    </nav>
+</header> -->
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <h1 class="fade-in">Transform Your Business with Smart Payments</h1>
+            <p class="slide-up">Experience next-generation payment solutions with our advanced POS systems and secure payment processing</p>
+            <div class="hero-buttons">
+                <a href="{% url 'solutions' %}" class="btn btn-primary btn-lg">Explore Solutions</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">Contact Sales</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'images\pos.png' %}" alt="Advanced POS System" class="fade-in">
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Why Choose Omnipay?</h2>
+            <p>Discover the advantages that make us the preferred choice for businesses</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card slide-up">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure Payments</h3>
+                <p>End-to-end encryption and PCI compliance for maximum security</p>
+            </div>
+            <div class="feature-card slide-up">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Fast Processing</h3>
+                <p>Lightning-fast transactions with 99.99% uptime guarantee</p>
+            </div>
+            <div class="feature-card slide-up">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Analytics & Insights</h3>
+                <p>Real-time reporting and business intelligence tools</p>
+            </div>
+            <div class="feature-card slide-up">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock technical support and assistance</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="products-section">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Our Solutions</h2>
+            <p>Comprehensive payment solutions for every business need</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="card">
+                    <!-- <div class="card-image">
+                        <img src="{% static 'images/pos-device.jpg' %}" alt="Mobile POS Terminal" class="card-img">
+                    </div> -->
+                    <div class="card-body">
+                        <h3 class="card-title">Mobile POS Terminal</h3>
+                        <p class="card-text">Advanced mobile point-of-sale system with dual screens and secure payment processing</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Dual screen display</li>
+                            <li><i class="fas fa-check"></i> EMV chip & contactless</li>
+                            <li><i class="fas fa-check"></i> Long battery life</li>
+                        </ul>
+                        <!-- <a href="{% url 'product_detail' 1 'mobile-pos-terminal' %}" class="btn btn-primary">Learn More</a> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Add more product cards here -->
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container text-center">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Join thousands of businesses that trust Omnipay for their payment needs</p>
+        <div class="cta-buttons">
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Get Started</a>
+            <a href="{% url 'solutions' %}" class="btn btn-outline btn-lg">View All Solutions</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Add animation classes when elements come into view
+    document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.slide-up, .fade-in').forEach((el) => observer.observe(el));
+    });
+</script>
+{% endblock %} 

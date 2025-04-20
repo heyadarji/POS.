@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Products - Omnipay Solutions
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="hero-content text-center">
+                <h1>Our Product Range</h1>
+                <p>Explore our high-performance POS systems tailored for your business.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="product-page-layout">
+            
+            <!-- Sidebar -->
+            <div class="product-sidebar">
+                <h3>Products</h3>
+                <ul class="category-list">
+                    <!-- <li><a href="#" class="active">All Products</a></li>
+                    <li><a href="#">POS Systems</a></li>
+                    <li><a href="#">Payment Terminals</a></li>
+                    <li><a href="#">Mobile Solutions</a></li>
+                    <li><a href="#">E-commerce</a></li>
+                    <li><a href="#">Accessories</a></li> -->
+                </ul>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-main">
+                <div class="product-grid">
+                    
+
+                    <!-- Product 0 -->
+                    <!-- <div class="card product-card">
+                        <img src="{% static 'images/pos-1.png' %}"  alt="POS" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">POS System - Basic</h3>
+                            <p class="card-text">Affordable and compact POS for small businesses and entry-level setups.</p>
+                            <div class="product-price">$899.00</div>
+                        </div>
+                    </div> -->
+
+                    <!-- Product 1 -->
+                    <div class="card product-card">
+                        <img src="{% static 'images/pos-16-5-11-6.png' %}"  alt="POS 16.5 + 11.6" class="card-img">
+                             <!-- onerror="this.src='{% static 'images/product-placeholder.jpg' %}'; this.onerror=null;"> -->
+                        <div class="card-body">
+                            <h3 class="card-title">POS System - 16.5" & 11.6"</h3>
+                            <p class="card-text">Stylish dual-screen POS system with customer display. Ideal for retail and hospitality.</p>
+                            <!-- <div class="product-price">$1,199.00</div> -->
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="card product-card">
+                        <img src="{% static 'images/pos-18-5-11-6.png' %}"  alt="POS 18.5 + 11.6" class="card-img">
+                             <!-- onerror="this.src='{% static 'images/product-placeholder.jpg' %}'; this.onerror=null;"> -->
+                        <div class="card-body">
+                            <h3 class="card-title">POS System - 18.5" & 11.6"</h3>
+                            <p class="card-text">Larger screen setup with wide viewing angles and strong performance for busy stores.</p>
+                            <!-- <div class="product-price">$1,399.00</div> -->
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="card product-card">
+                        <img src="{% static 'images/pos-16-5-11-61.png' %}"  alt="POS 16.5 + 11.6" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">POS System - Basic</h3>
+                            <p class="card-text">Affordable and compact POS for small businesses and entry-level setups.</p>
+                            <!-- <div class="product-price">$899.00</div> -->
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="card product-card">
+                        <img src="{% static 'images/pos-18-5-11-61.png' %}"  alt="POS 18.5 + 11.6" class="card-img">
+                        <div class="card-body">
+                            <h3 class="card-title">POS System - Basic</h3>
+                            <p class="card-text">A budget-friendly, compact POS perfect for new ventures and growing shops.</p>
+                            <!-- <div class="product-price">$899.00</div> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
