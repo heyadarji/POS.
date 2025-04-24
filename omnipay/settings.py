@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-(ib^i^-3gvyyzsjw6q7x6w9%h00kn4r8u5fg_vuob8((j^ruya"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = Fasle
+DEBUG = False
 
 ALLOWED_HOSTS = ['omnipayweb.herokuapp.com', 'localhost', 'pos-app-607x.onrender.com', '127.0.0.1']
 
