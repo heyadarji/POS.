@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-(ib^i^-3gvyyzsjw6q7x6w9%h00kn4r8u5fg_vuob8((j^ruya"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = Fasle
 
 ALLOWED_HOSTS = ['omnipayweb.herokuapp.com', 'localhost', 'pos-app-607x.onrender.com', '127.0.0.1']
 
@@ -80,6 +80,18 @@ WSGI_APPLICATION = "omnipay.wsgi.application"
 DATABASES = {
     "default": dj_database_url.config(default='sqlite:///db.sqlite3')
 }
+
+# import os
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DB_NAME'),
+#         'USER': os.environ.get('DB_USER'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD'),
+#         'HOST': os.environ.get('DB_HOST', 'localhost'),
+#         'PORT': os.environ.get('DB_PORT', '5432'),
+#     }
+# }
 
 
 # Password validation
