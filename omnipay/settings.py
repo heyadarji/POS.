@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-(ib^i^-3gvyyzsjw6q7x6w9%h00kn4r8u5fg_vuob8((j^ruya
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['omnipayweb.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['omnipayweb.herokuapp.com', 'localhost', 'pos-app-607x.onrender.com']
 
 
 # Application definition
@@ -131,3 +131,24 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# For WhiteNoise
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
